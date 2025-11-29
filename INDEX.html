@@ -146,11 +146,12 @@
         .whatsapp i { margin-right: 10px; }
 
 
-        /* --- ESTILOS DE JUEGO Y HOME --- */
+        /* --- ESTILOS DE JUEGO --- */
+        /* Eliminamos el estilo de #boton-home que separaba el contenido */
         #area-juego-snake {
             border: 2px solid #00FFFF; 
             display: block; 
-            margin: 20px auto;
+            margin: 20px auto 40px; /* Ajustamos el margen inferior para dar espacio */
             background-color: rgba(0, 0, 0, 0.8); 
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); 
         }
@@ -174,27 +175,6 @@
             box-shadow: 0 0 15px rgba(0, 191, 255, 0.9);
         }
         
-        #boton-home {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #4CAF50; 
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            /* SEPARACIÓN DE 7 'ENTERS' */
-            margin: 7rem auto 40px; 
-            display: block;
-            max-width: 200px;
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
-        }
-
-        #boton-home:hover {
-            background-color: #409F44;
-            box-shadow: 0 0 15px rgba(76, 175, 80, 0.9);
-        }
-
         #puntuacion {
             font-size: 1.5em;
             margin-bottom: 15px;
@@ -247,20 +227,18 @@
 
         <img id="logo-tecnostore-comida" src="TecnoStore.jpg" style="display:none;" alt="Logo de TecnoStore">
 
-        <button id="boton-home">
-            Home
-        </button>
-    </div>
+        </div>
 
     <script>
         // *** Lógica del Juego Snake ***
         const canvas = document.getElementById('area-juego-snake');
         const ctx = canvas.getContext('2d');
         const botonJugar = document.getElementById('boton-jugar-snake');
-        const botonHome = document.getElementById('boton-home');
         const puntuacionDiv = document.getElementById('puntuacion');
         const scoreSpan = document.getElementById('score');
         const logoComida = document.getElementById('logo-tecnostore-comida');
+        
+        // Eliminamos la referencia a botonHome y su eventListener.
 
         const tileSize = 20; 
         const gridCount = canvas.width / tileSize; 
@@ -273,10 +251,6 @@
         let isPlaying = false;
 
         botonJugar.addEventListener('click', iniciarJuego);
-        // Función para recargar la página asignada al botón Home
-        botonHome.addEventListener('click', function() {
-            window.location.reload(); 
-        });
         document.addEventListener('keydown', cambiarDireccion);
 
         function iniciarJuego() {
