@@ -13,6 +13,7 @@
             text-align: center;
             padding: 20px;
             
+            /* IMAGEN DE FONDO */
             background-image: url('fondo_tecnostore.jpg'); 
             background-size: cover; 
             background-repeat: no-repeat; 
@@ -22,7 +23,7 @@
             color: #f0f0f0; 
         }
 
-        /* Contenedor para el contenido principal para mejorar la legibilidad sobre el fondo */
+        /* Contenedor principal semi-transparente */
         .contenido-principal {
             background-color: rgba(0, 0, 0, 0.6); 
             padding: 20px;
@@ -33,7 +34,7 @@
         }
 
 
-        /* Animación del Título: Aparecer y Desvanecer */
+        /* Animación del Título */
         @keyframes fade-out-in {
             0% { opacity: 0; transform: scale(0.9); }
             50% { opacity: 1; transform: scale(1); }
@@ -182,6 +183,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s;
+            /* SEPARACIÓN DE 7 'ENTERS' */
             margin: 7rem auto 40px; 
             display: block;
             max-width: 200px;
@@ -251,7 +253,7 @@
     </div>
 
     <script>
-        // *** Lógica del Juego Snake (sin cambios funcionales) ***
+        // *** Lógica del Juego Snake ***
         const canvas = document.getElementById('area-juego-snake');
         const ctx = canvas.getContext('2d');
         const botonJugar = document.getElementById('boton-jugar-snake');
@@ -271,6 +273,7 @@
         let isPlaying = false;
 
         botonJugar.addEventListener('click', iniciarJuego);
+        // Función para recargar la página asignada al botón Home
         botonHome.addEventListener('click', function() {
             window.location.reload(); 
         });
@@ -342,7 +345,7 @@
 
             snake.unshift(newHead);
 
-            if (newHead.x === food.x && newHead.x === food.y) {
+            if (newHead.x === food.x && newHead.y === food.y) {
                 score++;
                 scoreSpan.textContent = score;
                 crearComida(); 
